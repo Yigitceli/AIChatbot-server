@@ -2,13 +2,14 @@ import express, { Express, NextFunction, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import userRouter from './Routes/userRoute';
 import morgan from 'morgan';
+import cors from 'cors';
 
 dotenv.config();
 
 const app: Express = express();
 const port = process.env.PORT;
 
-
+app.use(cors({origin: 'http://localhost:5173'}))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(morgan('dev'));
